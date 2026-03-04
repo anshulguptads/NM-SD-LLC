@@ -864,7 +864,7 @@ they are likely to have low attrition risk."
         
         txn_bool = txn.astype(bool)
         freq_items = apriori(txn_bool, min_support=0.08, use_colnames=True, max_len=4)
-        rules = ar_func(freq_items, metric='confidence', min_threshold=0.5, num_itemsets=len(freq_items))
+        rules = ar_func(freq_items, metric='confidence', min_threshold=0.5)
         rules['antecedents_str'] = rules['antecedents'].apply(lambda x: ', '.join(sorted(x)))
         rules['consequents_str'] = rules['consequents'].apply(lambda x: ', '.join(sorted(x)))
         rules['rule'] = rules['antecedents_str'] + ' → ' + rules['consequents_str']
